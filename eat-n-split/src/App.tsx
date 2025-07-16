@@ -52,6 +52,17 @@ function App() {
     );
   }
 
+  function onSplitBill(amount: number) {
+    console.log(amount);
+    const updatedFriends: Friend[] = friends.map((friend) =>
+      friend.id === selectedFriend?.id
+        ? { ...friend, balance: friend.balance + amount }
+        : friend
+    );
+
+    setFriends(updatedFriends);
+  }
+
   return (
     <div className="app">
       <div className="sidebar">
@@ -68,7 +79,12 @@ function App() {
       </div>
 
       <div>
-        {selectedFriend && <FormSplitBill selectedFriend={selectedFriend} />}
+        {selectedFriend && (
+          <FormSplitBill
+            selectedFriend={selectedFriend}
+            onSplitBill={onSplitBill}
+          />
+        )}
       </div>
     </div>
   );

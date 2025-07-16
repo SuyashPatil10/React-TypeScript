@@ -12,7 +12,6 @@ function FriendsList({
   onSelection,
   selectedFriend,
 }: FriendsListProps) {
-  console.log(friends);
   return (
     <ul>
       {friends.map((friend) => {
